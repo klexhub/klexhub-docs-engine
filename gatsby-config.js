@@ -2,56 +2,12 @@ const docsConfig = require("./docs-config.js")
 
 const isProduction = process.env.NODE_ENV === "production"
 
-const getProduct = (name) => {
-  const repo = "@cloudflare/cloudflare-brand-assets"
-  const dir = "resources/product-icons/"
-  return `./node_modules/${repo}/${dir}/${name}.js`
-}
-
-const products = [
-  "1.1.1.1",
-  "access",
-  "analytics",
-  "api",
-  "argo-tunnel",
-  "bots",
-  "byoip",
-  "cloudflare-for-teams",
-  "cloudflare-one",
-  "distributed-web",
-  "docs-engine",
-  "events",
-  "firewall",
-  "gateway",
-  "http3",
-  "images",
-  "internet",
-  "load-balancing",
-  "logs",
-  "magic-transit",
-  "mobile-sdk",
-  "network-interconnect",
-  "randomness-beacon",
-  "registrar",
-  "spectrum",
-  "ssl",
-  "stream",
-  "tenant",
-  "terraform",
-  "time-services",
-  "waf",
-  "waiting-room",
-  "warp-client",
-  "workers",
-]
-
 const productIcons = {}
-products.forEach(name => {
-  productIcons[name] = require(getProduct(name)).pathD
-})
 
 if (docsConfig.productLogoPathD && docsConfig.productIconKey) {
-  return Error("Set either `productLogoPathD` or `productIconKey` in docs-config.js, not both")
+  return Error(
+    "Set either `productLogoPathD` or `productIconKey` in docs-config.js, not both"
+  )
 }
 
 if (docsConfig.productIconKey) {
@@ -102,14 +58,14 @@ module.exports = {
     {
       resolve: "gatsby-plugin-layout",
       options: {
-        component: require.resolve("./src/components/docs-page.js")
-      }
+        component: require.resolve("./src/components/docs-page.js"),
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/content/`
-      }
+        path: `${__dirname}/src/content/`,
+      },
     },
     {
       resolve: "gatsby-plugin-mdx",
@@ -120,34 +76,34 @@ module.exports = {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 1382,
-              disableBgImageOnAlpha: true
+              disableBgImageOnAlpha: true,
             },
           },
           // Copies linked files from Markdown to public directory (ie for gifs)
           `gatsby-remark-copy-linked-files`,
         ],
-        remarkPlugins: [require("remark-slug")]
-      }
+        remarkPlugins: [require("remark-slug")],
+      },
     },
     {
       resolve: "gatsby-plugin-material-ui",
       options: {
         stylesProvider: {
-          disableGeneration: true
+          disableGeneration: true,
         },
       },
     },
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Cloudflare docs",
+        name: "KlexHub docs",
         short_name: "Docs",
         start_url: "/",
-        background_color: "#f38020",
-        theme_color: "#f38020",
+        background_color: "#f7931e",
+        theme_color: "#f7931e",
         display: "minimal-ui",
-        icon: "src/images/cloudflare-icon.png"
-      }
+        icon: "src/images/klexhub-icon.png",
+      },
     },
     // Consider enabling for PWA + offline functionality
     // https://gatsby.dev/offline

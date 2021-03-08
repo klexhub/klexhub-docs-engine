@@ -1,20 +1,22 @@
 import React from "react"
-
-import CloudflareLogo from "./cloudflare-logo"
 import DocsNavLogoLockup from "./docs-nav-logo-lockup"
+import KlexHubLogo from "./klexhub-logo"
 
 const DocsSidebarHeaderSection = () => (
   <div className="DocsSidebar--section DocsSidebar--header-section">
-    <a className="DocsSidebar--cloudflare-logo-link DocsSidebar--link" href="https://developers.cloudflare.com/docs/">
+    <a
+      className="DocsSidebar--cloudflare-logo-link DocsSidebar--link"
+      href="https://developers.klexhub.com/"
+    >
       <DocsNavLogoLockup
-        logo={<CloudflareLogo/>}
-        text={(
+        logo={<KlexHubLogo />}
+        text={
           <>
-            <span data-text="Cloudflare">Cloudflare</span>
+            <span data-text="KlexHub">KlexHub</span>
             <span>&nbsp;</span>
             <span data-text="Docs">Docs</span>
           </>
-        )}
+        }
       />
     </a>
   </div>

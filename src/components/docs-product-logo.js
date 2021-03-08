@@ -1,13 +1,16 @@
 import React from "react"
 import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
-import AccessibleSVG from "./accessible-svg"
 
 export default () => {
-  const { product, productLogoPathD }  = getCloudflareDocsConfig()
+  const { product, productLogoPathD } = getCloudflareDocsConfig()
 
   return (
-    <AccessibleSVG title={`Cloudflare ${product} logo`} viewBox="0 0 48 48">
-      <path d={productLogoPathD}/>
-    </AccessibleSVG>
+    <svg
+      title={`KlexHub ${product} logo`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 384 512"
+    >
+      <path fill="currentColor" d={productLogoPathD}></path>
+    </svg>
   )
 }

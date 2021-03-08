@@ -1,10 +1,6 @@
-# Cloudflare Docs Engine
+<img src="https://klexhub-public.s3.eu-central-1.amazonaws.com/KlexHub.png" alt="KlexHealth logo" title="KlexHub" align="right" width="200"/>
 
-Cloudflare’s open-source tool for building documentation.
+# KlexHub Docs Engine
 
-https://developers.cloudflare.com/docs-engine
-
-## Known issues
-
-- [@gatsbyjs/gatsby#17506](https://github.com/gatsbyjs/gatsby/issues/17506) Console warning about `lazy=load` images missing dimensions. This is a known issue in Gatsby and the [recommendation as of Sept, 2019](https://github.com/gatsbyjs/gatsby/issues/17506#issuecomment-529904482) is to ignore it.
-- Hard page loads with hashes don’t start scrolled when developing locally (e.g. `http://localhost:8000/#docs-content`).
+KlexHub is build on top of the open-source Cloudflare's open source
+docs engine. https://developers.cloudflare.com/docs-engine

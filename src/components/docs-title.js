@@ -1,5 +1,5 @@
-import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
+import getKlexHubDocsConfig from "../utils/get-cloudflare-docs-config"
 
 export default () => {
-  return getCloudflareDocsConfig().product
+  return getKlexHubDocsConfig().product
 }

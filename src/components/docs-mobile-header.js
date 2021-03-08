@@ -1,21 +1,22 @@
 import React from "react"
-
-import CloudflareLogo from "./cloudflare-logo"
 import DocsNavLogoLockup from "./docs-nav-logo-lockup"
-
+import KlexHubLogo from "./klexhub-logo"
 const DocsMobileHeader = () => (
   <div className="DocsMobileHeader">
-    <a className="DocsMobileHeader--cloudflare-logo-link Link Link-without-underline" href="https://developers.cloudflare.com/docs/">
+    <a
+      className="DocsMobileHeader--cloudflare-logo-link Link Link-without-underline"
+      href="https://developers.klexhub.com/"
+    >
       <DocsNavLogoLockup
         small={true}
-        logo={<CloudflareLogo/>}
-        text={(
+        logo={<KlexHubLogo />}
+        text={
           <>
-            <span data-text="Cloudflare">Cloudflare</span>
+            <span data-text="KlexHub">KlexHub</span>
             <span>&nbsp;</span>
             <span data-text="Docs">Docs</span>
           </>
-        )}
+        }
       />
     </a>
   </div>
