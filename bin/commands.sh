@@ -11,7 +11,7 @@ parent_path=$(dirname $docs_engine_path)
 parent_folder_name=$(basename $parent_path)
 
 if [ "$parent_folder_name" != "node_modules" ]; then
-  echo "Failed: expected the Cloudflare docs enginee to be inside node_modules"
+  echo "Failed: expected the KlexHub docs enginee to be inside node_modules"
   exit
 fi
 
@@ -27,8 +27,8 @@ if [ "$1" = "ghactionsbootstrap" ]; then
   echo "Creating .docs directory"
   mkdir .docs
 
-  echo "Moving cloudflare-docs-engine files into .docs"
-  cp -r node_modules/cloudflare-docs-engine/* .docs
+  echo "Moving klexhub-docs-engine files into .docs"
+  cp -r node_modules/klexhub-docs-engine/* .docs
 
   echo "Entering .docs"
   cd .docs
@@ -44,8 +44,8 @@ if [ "$1" = "bootstrap" ]; then
   echo "Deleting .docs"
   rm -rf .docs
 
-  echo "Moving cloudflare-docs-engine files into .docs"
-  cp -r node_modules/cloudflare-docs-engine/ .docs
+  echo "Moving klexhub-docs-engine files into .docs"
+  cp -r node_modules/klexhub-docs-engine/ .docs
 
   echo "Entering .docs"
   cd .docs
