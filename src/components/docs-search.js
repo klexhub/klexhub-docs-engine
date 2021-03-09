@@ -1,30 +1,24 @@
-import React, { useEffect } from "react"
 import { navigate } from "@reach/router"
-import getPathPrefix from "../utils/get-path-prefix"
-import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
-
+import React, { useEffect } from "react"
 import Helmet from "react-helmet"
-
-import DocsTitle from "./docs-title"
+import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
+import getPathPrefix from "../utils/get-path-prefix"
 import AccessibleSVG from "./accessible-svg"
+import DocsTitle from "./docs-title"
 
 const DocsSearch = () => {
   const pathPrefix = getPathPrefix()
 
   const {
     pathPrefix: productionPathPrefix,
-    search: {
-      indexName,
-      apiKey,
-      algoliaOptions
-    }
+    search: { indexName, appId, apiKey, algoliaOptions },
   } = getCloudflareDocsConfig()
 
   const enableSearch = indexName && apiKey && algoliaOptions
 
   // Adjust search result URL pathname to work with local development
   // See https://github.com/cloudflare/cloudflare-docs-engine/issues/196
-  const fixSearchResultPathname = (pathname) => {
+  const fixSearchResultPathname = pathname => {
     // When the pathPrefix we get from getPathPrefix() matches the
     // productionPathPrefix we get from getCloudflareDocsConfig()
     // then we should not strip the prefix from the pathname. This
@@ -58,6 +52,7 @@ const DocsSearch = () => {
 
       const search = window.docsearch({
         indexName,
+        appId,
         apiKey,
         algoliaOptions,
 
@@ -74,7 +69,7 @@ const DocsSearch = () => {
           appendTo: ".DocsSearch--input-wrapper",
           hint: false,
 
-          autoselectOnBlur: matchMedia("(pointer: course)").matches
+          autoselectOnBlur: matchMedia("(pointer: course)").matches,
         },
 
         // https://docsearch.algolia.com/docs/behavior
@@ -90,7 +85,6 @@ const DocsSearch = () => {
           // Don’t scroll to hash when it’s just the h1.
           if (suggestion.isLvl0) {
             navigate(pathname)
-
           } else {
             navigate(pathname + url.hash)
 
@@ -109,7 +103,7 @@ const DocsSearch = () => {
               hits.splice(i, 1)
             }
           }
-        }
+        },
       })
 
       const autocompleteWrapper = search.autocomplete.autocomplete.getWrapper()
@@ -151,25 +145,35 @@ const DocsSearch = () => {
       init()
     }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (!enableSearch) {
-    return <React.Fragment/>
+    return <React.Fragment />
   }
 
   return (
     <>
       <Helmet>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.js"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.js" />
       </Helmet>
 
       <div className="DocsSearch">
         <div className="DocsSearch--input-wrapper">
-          <input id="DocsSearch--input" className="DocsSearch--input" type="text" spellCheck="false" autoComplete="false" placeholder={"Search " + DocsTitle() + " docs..."}/>
+          <input
+            id="DocsSearch--input"
+            className="DocsSearch--input"
+            type="text"
+            spellCheck="false"
+            autoComplete="false"
+            placeholder={"Search " + DocsTitle() + " docs..."}
+          />
           <div className="DocsSearch--input-icon">
-            <AccessibleSVG title="Search icon (depiction of a magnifying glass)" viewBox="0 0 16 16">
-              <path d="M11.999 10.585l3.458 3.458a1 1 0 01-1.414 1.414L10.585 12a6.5 6.5 0 111.414-1.414zM6.75 11.5a4.75 4.75 0 100-9.5 4.75 4.75 0 000 9.5z"/>
+            <AccessibleSVG
+              title="Search icon (depiction of a magnifying glass)"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11.999 10.585l3.458 3.458a1 1 0 01-1.414 1.414L10.585 12a6.5 6.5 0 111.414-1.414zM6.75 11.5a4.75 4.75 0 100-9.5 4.75 4.75 0 000 9.5z" />
             </AccessibleSVG>
           </div>
           <div className="DocsSearch--input-bottom-border"></div>

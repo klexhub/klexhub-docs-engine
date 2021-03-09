@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 // This helps us get all of the cloudflareDocs metadata
 // at once. It’s not exactly ideal, but since we cannot
@@ -10,7 +10,9 @@ import { useStaticQuery, graphql } from "gatsby"
 // https://github.com/gatsbyjs/gatsby/issues/9843
 
 export default () => {
-  const { site: { siteMetadata }} = useStaticQuery(
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(
     graphql`
       query {
         site {
@@ -27,6 +29,7 @@ export default () => {
               }
               search {
                 indexName
+                appId
                 apiKey
                 algoliaOptions {
                   facetFilters
